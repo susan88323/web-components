@@ -9,8 +9,11 @@
 </head>
 <body>
     <template id="tooltip-template">
-        <span> (?)</span>
+        <slot>Some default</slot><span> (?)</span>
     </template>
-    <uc-tooltip text="Test content"></uc-tooltip>
+    <p>
+        <uc-tooltip text="Test content">Web components</uc-tooltip>are awesome!
+    </p>
+    <uc-tooltip></uc-tooltip>
 </body>
 </html>
