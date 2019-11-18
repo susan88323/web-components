@@ -5,12 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web Components</title>
+    <style>
+        div {
+            border: 2px solid orange;
+        }
+
+        .highlight {
+            background-color: #f7d28e;
+        }
+    </style>
     <script src="tooltip.js"></script>
     <script src="confirm-link.js"></script>
 </head>
 <body>
     <p>
-        <uc-tooltip text="Test content">Web components</uc-tooltip>are awesome!
+        <uc-tooltip text="Test content">
+            <span class="highlight">Web components</span>
+        </uc-tooltip>are awesome!
     </p>
     <uc-tooltip></uc-tooltip>
     <a href="https://www.google.com">Google</a>
