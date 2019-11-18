@@ -3,6 +3,7 @@ class Tooltip extends HTMLElement {
         super();
         this._tooltipContainer;
         this._tooltipIcon;
+        this._tooltipVisible = false;
         this._tooltipText = 'Some dummy tooltip text';
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
@@ -80,14 +81,26 @@ class Tooltip extends HTMLElement {
         this._tooltipIcon.removeEventListener('mouseleave', this._hideTooltip);
     }
 
+    _render() {
+        if (this._tooltipVisible) {
+            this._tooltipContainer = document.createElement('div');
+            this._tooltipContainer.textContent = this._tooltipText;
+            this.shadowRoot.appendChild(this._tooltipContainer);
+        } else {
+            if (this._tooltipContainer) {
+                this.shadowRoot.removeChild(this._tooltipContainer);
+            }
+        }
+    }
+
     _showTooltip() {
-        this._tooltipContainer = document.createElement('div');
-        this._tooltipContainer.textContent = this._tooltipText;
-        this.shadowRoot.appendChild(this._tooltipContainer);
+        this._tooltipVisible = true;
+        this._render();
     }
 
     _hideTooltip() {
-        this.shadowRoot.removeChild(this._tooltipContainer);
+        this._tooltipVisible = false;
+        this._render();
     }
 }
 
