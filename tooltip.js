@@ -21,6 +21,10 @@ class Tooltip extends HTMLElement {
                     box-shadow: 1px 1px 6px rgba(0,0,0,0.26);
                 }
 
+                :host {
+                    position: relative;
+                }
+
                 :host(.important) {
                     background: var(--color-primar, #ccc);
                     padding: 0.15rem;
@@ -60,7 +64,6 @@ class Tooltip extends HTMLElement {
         this._tooltipIcon = this.shadowRoot.querySelector('span');
         this._tooltipIcon.addEventListener('mouseenter', this._showTooltip.bind(this));
         this._tooltipIcon.addEventListener('mouseleave', this._hideTooltip.bind(this));
-        this.style.position = 'relative';
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
