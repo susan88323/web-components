@@ -10,6 +10,11 @@
             box-sizing: border-box;
         }
 
+        body {
+            margin: 2rem;
+            font-family: sans-serif;
+        }
+
         /* equal to html{} */
         :root {
             --color-primary: rgb(125, 211, 240);
@@ -18,6 +23,7 @@
     </style>
     <script src="tooltip.js"></script>
     <script src="confirm-link.js"></script>
+    <script src="modal.js"></script>
 </head>
 <body>
     <p>
@@ -28,5 +34,19 @@
     <uc-tooltip></uc-tooltip>
     <a href="https://www.google.com">Google</a>
     <a is="uc-confirm-link" href="https://www.google.com">Google</a>
+
+    <uc-modal>
+        <p>With your confirmation you agree to pay the amout</p>
+    </uc-modal>
+    <p>Please confirm your choice.</p>
+    <button>Show Details & Confirm</button>
+    <script>
+        const confirmButton = document.querySelector('button');
+        const modal = document.querySelector('uc-modal');
+
+        confirmButton.addEventListener('click', () => {
+            modal.setAttribute('opened', '');
+        });
+    </script>
 </body>
 </html>
