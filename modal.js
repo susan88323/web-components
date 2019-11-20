@@ -15,6 +15,13 @@ class Modal extends HTMLElement {
                     opacity: 0;
                     pointer-events: none;
                 }
+
+                :host([opened]) #backdrop,
+                :host([opened]) #modal {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+
                 #modal {
                     position: fixed;
                     top: 15vh;
@@ -70,6 +77,8 @@ class Modal extends HTMLElement {
         `;
     }
 
+    // We don't need to use this method to handle attribute,
+    // instead, we can simply use css :host([opened])
     // attributeChangedCallback(name, oldValue, newValue) {
         // if (name === 'opened') {
         //     if (this.hasAttribute('opened')) {
